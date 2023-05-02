@@ -10,20 +10,17 @@ const TaskDetails = () => {
   const [location, setLocation] = useState(null);
   const loginContext = useContext(LoginContext);
   const params = useParams();
-  const baseURL = process.env.REACT_APP_BASE_URL
 
   const fetchTaskDetails = async () => {
-    const baseURL = process.env.REACT_APP_BASE_URL
     const res = await fetch(
-      `${baseURL}/search/${params.type}/${params.id}`
+      `/search/${params.type}/${params.id}`
     );
     const data = await res.json();
     setTaskDetails(data);
   };
 
   const updateAcceptance = async () => {
-    const baseURL = process.env.REACT_APP_BASE_URL
-    const res = await fetch(`${baseURL}/tasks`, {
+    const res = await fetch(`/tasks`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -108,7 +105,7 @@ const TaskDetails = () => {
               src={
                 taskDetails.image.startsWith("http")
                   ? taskDetails.image
-                  : `${baseURL}/${taskDetails.image}`
+                  : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${taskDetails.image}`
               }
               alt={`${taskDetails.title}`}
             />

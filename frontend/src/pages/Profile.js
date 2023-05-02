@@ -16,8 +16,7 @@ const Profile = () => {
   // Fetch user data from API (by specific username)
   //================
 
-  const baseURL = process.env.REACT_APP_BASE_URL
-  const url = `${baseURL}/users/${currentUser}`;
+  const url = `/users/${currentUser}`;
 
   const getUserInfo = async () => {
     try {
@@ -53,9 +52,8 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/users/${currentUser}/update`,
+        `/users/${currentUser}/update`,
         {
           method: "POST",
           mode: "cors",

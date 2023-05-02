@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 const MyTasksCard = (props) => {
   const input = useRef("");
   const loginContext = useContext(LoginContext);
-  const baseURL = process.env.REACT_APP_BASE_URL
 
   return (
     <div className={styles.container}>
@@ -17,7 +16,7 @@ const MyTasksCard = (props) => {
             src={
               props.task.image.startsWith("http")
                 ? props.task.image
-                : `${baseURL}/${props.task.image}`
+                : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${props.task.image}`
             }
             alt={`${props.task.title}`}
           />

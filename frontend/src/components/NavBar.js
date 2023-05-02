@@ -17,9 +17,8 @@ const NavBar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/sessions/logout`
+        `/sessions/logout`
       );
       await res.json();
 

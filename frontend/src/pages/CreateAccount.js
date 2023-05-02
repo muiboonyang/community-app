@@ -24,9 +24,8 @@ const CreateAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/users/new`,
+        `/users/new`,
         {
           method: "POST",
           mode: "cors",

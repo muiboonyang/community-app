@@ -10,8 +10,7 @@ const Reviews = () => {
   // Fetch user data from API (by specific username)
   //================
 
-  const baseURL = process.env.REACT_APP_BASE_URL
-  const url = `${baseURL}/users/${params.username}`;
+  const url = `/users/${params.username}`;
 
   const getUserInfo = async () => {
     try {

@@ -20,9 +20,8 @@ const App = () => {
   const [profileName, setProfileName] = useState("");
 
   const handleLogin = async () => {
-    const baseURL = process.env.REACT_APP_BASE_URL
     const res = await fetch(
-      `${baseURL}/sessions`
+      `/sessions`
     );
     const data = await res.json();
     console.log(data);

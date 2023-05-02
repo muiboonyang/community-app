@@ -18,9 +18,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/sessions/new`,
+        `/sessions/new`,
         {
           method: "POST",
           mode: "cors",

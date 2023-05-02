@@ -7,7 +7,6 @@ const SearchCard = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
   const capitalized = capitalizeFirstLetter(props.requests.type);
-  const baseURL = process.env.REACT_APP_BASE_URL
 
   return (
     <div className={styles.container}>
@@ -17,7 +16,7 @@ const SearchCard = (props) => {
             src={
               props.requests.image.startsWith("http")
                 ? props.requests.image
-                : `${baseURL}/${props.requests.image}`
+                : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${props.requests.image}`
             }
             alt={`${props.requests.title}`}
           />

@@ -6,7 +6,7 @@ import HomepageCarousel from "../components/HomepageCarousel";
 const Home = () => {
   // const seedTask = async () => {
   //   try {
-  //     await fetch(`${baseURL}/seedtask`);
+  //     await fetch(`/seedtask`);
   //   } catch (err) {
   //     console.log(err);
   //   }
@@ -14,7 +14,7 @@ const Home = () => {
 
   // const deleteTasks = async () => {
   //   try {
-  //     await fetch(`${baseURL}/delete/alltask`);
+  //     await fetch(`/delete/alltask`);
   //   } catch (err) {
   //     console.log(err);
   //   }
@@ -22,7 +22,7 @@ const Home = () => {
 
   // const seedUser = async () => {
   //   try {
-  //     await fetch(`${baseURL}/seeduser`);
+  //     await fetch(`/seeduser`);
   //   } catch (err) {
   //     console.log(err);
   //   }
@@ -30,7 +30,7 @@ const Home = () => {
 
   // const deleteUsers = async () => {
   //   try {
-  //     await fetch(`${baseURL}/delete/alluser`);
+  //     await fetch(`/delete/alluser`);
   //   } catch (err) {
   //     console.log(err);
   //   }

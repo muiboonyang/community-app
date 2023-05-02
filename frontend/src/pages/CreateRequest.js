@@ -31,9 +31,8 @@ const CreateRequest = () => {
       const formData = new FormData();
       formData.append("image", selectedFile);
       console.log(formData);
-      const baseURL = process.env.REACT_APP_BASE_URL
       await fetch(
-        `${baseURL}/requests/${currentUser}`,
+        `/requests/${currentUser}`,
         {
           method: "POST",
           body: formData,
@@ -45,9 +44,8 @@ const CreateRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/requests/${currentUser}`,
+        `/requests/${currentUser}`,
         {
           method: "POST",
           mode: "cors",

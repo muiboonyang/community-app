@@ -12,8 +12,7 @@ const SearchResults = () => {
   // Fetch requests data from API (by specific type)
   //================
 
-  const baseURL = process.env.REACT_APP_BASE_URL
-  const url = `${baseURL}/search/${params.type}`;
+  const url = `/search/${params.type}`;
 
   const fetchRequests = async () => {
     try {

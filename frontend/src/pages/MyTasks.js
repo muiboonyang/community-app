@@ -10,9 +10,8 @@ const Tasks = () => {
 
   const fetchAllTasks = async () => {
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
       const res = await fetch(
-        `${baseURL}/search/all`
+        `/search/all`
       );
       const data = await res.json();
       setAllTasks(data);
@@ -23,8 +22,7 @@ const Tasks = () => {
 
   const completeTask = async (identifier, index) => {
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
-      await fetch(`${baseURL}/tasks/complete`, {
+      await fetch(`/tasks/complete`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -45,8 +43,7 @@ const Tasks = () => {
 
   const handleSubmitReview = async (identifier, input, acceptedBy, index) => {
     try {
-      const baseURL = process.env.REACT_APP_BASE_URL
-      await fetch(`${baseURL}/addreview`, {
+      await fetch(`/addreview`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
