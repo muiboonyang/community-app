@@ -1,0 +1,18 @@
+/* Formatting for carousel */
+
+img {
+  height: 600px;
+}
+
+.carousel {
+  text-align: center;
+  position: relative;
+  margin: auto;
+  width: 95%;
+}
+
+.carouselCaption {
+  background: rgba(28, 29, 28, 0.7);
+  text-decoration: none;
+  color: white;
+}

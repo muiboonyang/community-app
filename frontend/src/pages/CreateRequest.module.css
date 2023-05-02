@@ -1,0 +1,40 @@
+.form {
+  padding: 10px 20px;
+}
+.message {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.btn {
+  background-color: rgb(85 85 85);
+  border: 1px solid rgb(85 85 85);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Charlotte";
+  text-transform: uppercase;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: rgb(67, 172, 173);
+  border: 1px solid rgb(67, 172, 173);
+  color: black;
+}
+
+.createRequest {
+  margin: auto;
+  width: 800px;
+  padding-top: 15px;
+}
+
+.createRequest h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
