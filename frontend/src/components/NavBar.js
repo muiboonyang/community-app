@@ -1,4 +1,4 @@
-import { NavLink, Link, Redirect } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import LoginContext from "../context/login-context";
 import Nav from "react-bootstrap/Nav";
@@ -9,6 +9,7 @@ import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   const loginContext = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const [successMessage, setSuccessMessage] = useState("");
   const [failureMessage, setFailureMessage] = useState("");
@@ -27,6 +28,7 @@ const NavBar = () => {
         loginContext.setLoggedIn(false);
         loginContext.setProfileName("");
         setShowMessage(true);
+        navigate("/");
       } else {
         setFailureMessage("Log out unsuccessful!");
         setShowMessage(true);
@@ -43,8 +45,7 @@ const NavBar = () => {
           <Navbar.Brand>
             <NavLink
               to="/"
-              exact
-              activeClassName={styles.active}
+              activeclassname={styles.active}
               style={{ textShadow: "1px 0 grey" }}
             >
               <i className="fa fa-fw fa-tasks"></i> Community
@@ -91,15 +92,15 @@ const NavBar = () => {
           <Nav>
             {loginContext.profileName ? (
               <div className={styles.loggedInContainer}>
-                <NavLink to="/createrequest" activeClassName={styles.active}>
+                <NavLink to="/createrequest" activeclassname={styles.active}>
                   <i className="fa fa-fw fa-envelope"></i> Create New Request
                 </NavLink>
-                <NavLink to="/mytasks" activeClassName={styles.active}>
+                <NavLink to="/mytasks" activeclassname={styles.active}>
                   <i className="fa fa-fw fa-list"></i>
                   My Tasks
                 </NavLink>
 
-                <NavLink to="/profile" activeClassName={styles.active}>
+                <NavLink to="/profile" activeclassname={styles.active}>
                   <i className="fa fa-fw fa-user"></i>
                   {loginContext.profileName}
                 </NavLink>
@@ -109,7 +110,7 @@ const NavBar = () => {
                 </NavLink>
               </div>
             ) : (
-              <NavLink to="/login" activeClassName={styles.active}>
+              <NavLink to="/login" activeclassname={styles.active}>
                 <i className="fa fa-fw fa-user"></i> Log In
               </NavLink>
             )}
@@ -118,18 +119,6 @@ const NavBar = () => {
       </div>
 
       <div className={styles.message}>
-        {successMessage && showMessage ? (
-          <>
-            <Redirect to="/login" />
-            <Alert
-              variant="success"
-              onClose={() => setShowMessage(false)}
-              dismissible
-            >
-              {successMessage}
-            </Alert>
-          </>
-        ) : null}
         {failureMessage && showMessage ? (
           <Alert
             variant="danger"

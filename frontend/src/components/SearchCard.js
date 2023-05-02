@@ -16,7 +16,10 @@ const SearchCard = (props) => {
             src={
               props.requests.image.startsWith("http")
                 ? props.requests.image
-                : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${props.requests.image}`
+                : (process.env.NODE_ENV !== "production"
+                          ? `${process.env.REACT_APP_BASE_URL}/${props.requests.image}`
+                          : `/${props.requests.image}`
+                    )
             }
             alt={`${props.requests.title}`}
           />

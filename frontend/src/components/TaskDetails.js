@@ -105,7 +105,10 @@ const TaskDetails = () => {
               src={
                 taskDetails.image.startsWith("http")
                   ? taskDetails.image
-                  : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${taskDetails.image}`
+                  : (process.env.NODE_ENV !== "production"
+                          ? `${process.env.REACT_APP_BASE_URL}/${taskDetails.image}`
+                          : `/${taskDetails.image}`
+                    )
               }
               alt={`${taskDetails.title}`}
             />

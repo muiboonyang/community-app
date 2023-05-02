@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import LoginContext from "./context/login-context";
 
 import NavBar from "./components/NavBar";
@@ -14,6 +13,7 @@ import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import Profile from "./pages/Profile";
 import Reviews from "./pages/Reviews";
+import PrivateRoute from "./pages/PrivateRoute";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -39,22 +39,41 @@ const App = () => {
     >
       <BrowserRouter>
         <NavBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search/:type" exact component={SearchResults} />
-          <Route path="/register" exact component={CreateAccount} />
-          <Route path="/search/:type/:id" exact component={TaskDetails} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/:username/reviews" exact component={Reviews} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:type" element={<SearchResults />} />
+          <Route path="/register" element={<CreateAccount />} />
+          <Route path="/search/:type/:id" element={<TaskDetails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/:username/reviews" element={<Reviews />} />
 
-          {loggedIn ? (
-            <Switch>
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/createrequest" exact component={CreateRequest} />
-              <Route path="/mytasks" exact component={MyTasks} />
-            </Switch>
-          ) : null}
-        </Switch>
+          <React.Fragment>
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute isLoggedIn={loggedIn}>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/createrequest"
+              element={
+                <PrivateRoute isLoggedIn={loggedIn}>
+                  <CreateRequest />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/mytasks"
+              element={
+                <PrivateRoute isLoggedIn={loggedIn}>
+                  <MyTasks />
+                </PrivateRoute>
+              }
+            />
+          </React.Fragment>
+        </Routes>
       </BrowserRouter>
     </LoginContext.Provider>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Redirect, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoginContext from "../context/login-context";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -7,6 +7,7 @@ import styles from "./Login.module.css";
 
 const Login = () => {
   const loginContext = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +43,7 @@ const Login = () => {
         setShowMessage(true);
         setUsername("");
         setPassword("");
+        navigate("/");
       } else {
         setFailureMessage("Log in unsuccessful!");
         setShowMessage(true);
@@ -54,8 +56,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.message}>
-        {successMessage ? <Redirect to="/" /> : null}
-        {failureMessage && showMessage ? (
+        {failureMessage && showMessage &&
           <Alert
             variant="danger"
             onClose={() => setShowMessage(false)}
@@ -63,7 +64,7 @@ const Login = () => {
           >
             {failureMessage}
           </Alert>
-        ) : null}
+        }
       </div>
 
       <br />

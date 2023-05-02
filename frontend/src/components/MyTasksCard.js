@@ -16,7 +16,10 @@ const MyTasksCard = (props) => {
             src={
               props.task.image.startsWith("http")
                 ? props.task.image
-                : `${process.env.NODE_ENV !== "production" && process.env.REACT_APP_BASE_URL}/${props.task.image}`
+                : (process.env.NODE_ENV !== "production"
+                          ? `${process.env.REACT_APP_BASE_URL}/${props.task.image}`
+                          : `/${props.task.image}`
+                    )
             }
             alt={`${props.task.title}`}
           />
