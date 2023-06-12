@@ -3,7 +3,7 @@ Made for SEI33 - Project 3
 
 <h2>Introduction</h2>
 A simple community app made with React and Express.
-<br>This app is hosted on MongoDB Atlas, Netlify and Heroku
+<br>This app is hosted on MongoDB Atlas and Heroku
 <br>
 <br><a href="https://community-app-sg.herokuapp.com/" target="_blank">Try it out here!</a>
 
